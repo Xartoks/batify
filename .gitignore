@@ -1,8 +1,7 @@
 /*
 
-!xpub
-
 !99-batify.rules
+!batify.sh
 !Makefile
 !README.md
 !.gitignore
