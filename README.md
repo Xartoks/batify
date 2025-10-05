@@ -23,12 +23,6 @@ Batify
 
 Using libnotify, you might need to install a [notification server](https://wiki.archlinux.org/index.php/Desktop_notifications).
 
-## Package (AUR)
-
-```
-$ yaourt -S batify
-```
-
 ## Manually
 
 ```
