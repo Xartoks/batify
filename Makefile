@@ -1,20 +1,21 @@
 UDEVDIR     = $(DESTDIR)/etc/udev/rules.d
-BINDIR      = $(DESTDIR)/usr/bin
 UDEVRULE    = 99-batify.rules
-XPUB        = xpub/src/xpub.sh
+BINDIR		= /usr/local/bin
+NOTIF_FILE  = batify.sh
 
 $(XPUB):
 	$(error xpub: submodule not found.)
 
 install: $(XPUB)
 	mkdir  -p $(UDEVDIR)
-	mkdir -p $(BINDIR)
+	mkdir  -p $(BINDIR)
 	chmod 644 $(UDEVRULE)
-	chmod 755 $(XPUB)
 	cp $(UDEVRULE) $(UDEVDIR)/$(UDEVRULE)
-	cp $(XPUB) $(BINDIR)/xpub
+	cp $(NOTIF_FILE) $(BINDIR)/batify 
+	udevadm control --reload-rules
 
 uninstall:
-	$(RM) $(UDEVDIR)/$(UDEVRULE) $(BINDIR)/xpub
+	$(RM) $(UDEVDIR)/$(UDEVRULE)
+	$(RM) $(BINDIR)/batify
 
 .PHONY: install uninstall
